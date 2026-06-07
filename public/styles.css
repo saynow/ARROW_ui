@@ -177,6 +177,11 @@ textarea:focus {
   margin-top: 22px;
 }
 
+.sequence-grid > .field {
+  display: flex;
+  flex-direction: column;
+}
+
 .label-row {
   display: flex;
   align-items: center;
@@ -190,6 +195,7 @@ textarea:focus {
 }
 
 .sequence-notice {
+  flex: 1;
   min-height: 86px;
   margin-top: 12px;
   padding: 12px 14px;
