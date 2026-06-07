@@ -31,4 +31,3 @@ Vercel 함수는 요청마다 모델을 재학습하지 않습니다. 새 데이
 
 ```bash
 venv/bin/python simulation/export_model.py
-```
