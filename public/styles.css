@@ -189,6 +189,35 @@ textarea:focus {
   font-size: 0.72rem;
 }
 
+.sequence-notice {
+  min-height: 86px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-left: 2px solid rgba(141, 240, 189, 0.42);
+  border-radius: 0 8px 8px 0;
+  color: #8fa79e;
+  background: rgba(141, 240, 189, 0.035);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.sequence-notice p {
+  position: relative;
+  margin: 0;
+  padding-left: 12px;
+}
+
+.sequence-notice p::before {
+  position: absolute;
+  left: 0;
+  content: "-";
+  color: var(--accent);
+}
+
+.sequence-notice p + p {
+  margin-top: 6px;
+}
+
 .form-error {
   min-height: 22px;
   margin: 14px 0 6px;
