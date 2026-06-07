@@ -10,7 +10,10 @@ from pathlib import Path
 from anarci.anarci import anarci
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 
-ARTIFACT_PATH = Path(__file__).resolve().parent / "model_artifact.json"
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+ARTIFACT_PATH = PROJECT_DIR / "lib" / "model_artifact.json"
+HMMER_DIR = PROJECT_DIR / "bin"
+HMMSCAN_PATH = HMMER_DIR / "hmmscan"
 ARTIFACT = json.loads(ARTIFACT_PATH.read_text(encoding="utf-8"))
 STANDARD_AMINO_ACIDS = re.compile(r"[ACDEFGHIKLMNPQRSTVWY]+")
 
@@ -35,11 +38,16 @@ def validate_sequence(sequence: str, label: str) -> str:
 
 
 def extract_cdr3(sequence: str, expected_chain: str) -> str:
+    if not HMMSCAN_PATH.is_file():
+        raise RuntimeError(f"hmmscan executable is missing: {HMMSCAN_PATH}")
+
     numbered, alignments, _ = anarci(
         [("query", sequence)],
         scheme="imgt",
         allowed_species=None,
         assign_germline=False,
+        hmmerpath=str(HMMER_DIR),
+        ncpu=1,
     )
     if not numbered or numbered[0] is None or not numbered[0]:
         raise SequenceValidationError(

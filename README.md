@@ -23,6 +23,7 @@ npx vercel --prod
 - `api/predict.py`: 메타데이터 조회 및 ADC score 예측 API
 - `lib/model_artifact.json`: 로컬에서 학습해 내보낸 모델 파라미터
 - `lib/adc_runtime.py`: ANARCI 기반 CDR3 추출 및 경량 추론
+- `bin/hmmscan`: Vercel 런타임에서 ANARCI가 사용하는 HMMER 실행 파일
 
 Vercel 함수는 요청마다 모델을 재학습하지 않습니다. 새 데이터로
 `model.ipynb`의 학습 결과를 변경했다면 아래 명령으로 모델 아티팩트를 갱신한 후
@@ -30,4 +31,3 @@ Vercel 함수는 요청마다 모델을 재학습하지 않습니다. 새 데이
 
 ```bash
 venv/bin/python simulation/export_model.py
-```

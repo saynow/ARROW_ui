@@ -20,6 +20,7 @@ warnings.filterwarnings("ignore", message="Use Chain.multiple_domains")
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATASET_DIR = PROJECT_ROOT / "dataset"
+HMMER_DIR = Path(__file__).resolve().parent / "bin"
 
 MODEL_CDR_NAMES = ["HCDR3", "LCDR3"]
 MODEL_PROPERTY_SUFFIXES = [
@@ -109,6 +110,8 @@ def _extract_cdr3(sequence: str, expected_chain: str) -> str:
         scheme="imgt",
         allowed_species=None,
         assign_germline=False,
+        hmmerpath=str(HMMER_DIR),
+        ncpu=1,
     )
     if not numbered or numbered[0] is None:
         raise ValueError("antibody variable domain not found")
