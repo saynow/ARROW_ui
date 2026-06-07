@@ -31,29 +31,3 @@ Vercel 함수는 요청마다 모델을 재학습하지 않습니다. 새 데이
 ```bash
 venv/bin/python simulation/export_model.py
 ```
-
-## 로컬 실행
-
-프로젝트 루트에서:
-
-```bash
-venv/bin/python simulation/app.py
-```
-
-브라우저에서 `http://127.0.0.1:8000`에 접속합니다.
-
-다른 기기에서도 접속하도록 열려면:
-
-```bash
-venv/bin/python simulation/app.py --host 0.0.0.0 --port 8000
-```
-
-별도 개발 환경에서는 먼저 의존성을 설치합니다.
-
-```bash
-python -m pip install -r simulation/requirements-dev.txt
-```
-
-서버 시작 시 `dataset/approved.CSV`, `phase3.CSV`, `phase2.CSV`,
-`phase1.CSV`를 읽어 모델을 한 번 학습합니다. 입력된 heavy/light chain에서
-HCDR3와 LCDR3를 추출해 ADC score를 1~10 범위로 반환합니다.
