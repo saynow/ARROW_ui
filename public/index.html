@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADC Score Predictor</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">ANTIBODY ANALYSIS</p>
+        <h1>ADC Score Predictor</h1>
+        <p class="intro">
+          항체의 heavy chain, light chain 서열과 subtype을 입력하면
+          CDR3 특성을 추출하여 ADC score를 예측합니다.
+        </p>
+        <div class="model-status" id="model-status">
+          <span class="status-dot"></span>
+          <span>모델을 준비하고 있습니다.</span>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <form id="prediction-form" class="input-card">
+          <div class="field">
+            <label for="subtype">Antibody subtype</label>
+            <input
+              id="subtype"
+              name="subtype"
+              list="subtype-options"
+              placeholder="예: Humanized IgG1-kappa"
+              autocomplete="off"
+              required
+            >
+            <datalist id="subtype-options"></datalist>
+          </div>
+
+          <div class="sequence-grid">
+            <div class="field">
+              <div class="label-row">
+                <label for="heavy-sequence">Heavy chain sequence</label>
+                <span id="heavy-count">0 aa</span>
+              </div>
+              <textarea
+                id="heavy-sequence"
+                name="heavy_sequence"
+                placeholder="Heavy chain 아미노산 서열을 입력하세요."
+                spellcheck="false"
+                required
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <div class="label-row">
+                <label for="light-sequence">Light chain sequence</label>
+                <span id="light-count">0 aa</span>
+              </div>
+              <textarea
+                id="light-sequence"
+                name="light_sequence"
+                placeholder="Light chain 아미노산 서열을 입력하세요."
+                spellcheck="false"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert"></p>
+          <button type="submit" id="predict-button">
+            <span class="button-text">ADC score 예측</span>
+            <span class="button-loader" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <aside class="result-card" id="result-card" aria-live="polite">
+          <div class="empty-result" id="empty-result">
+            <div class="molecule-mark">ADC</div>
+            <h2>Prediction result</h2>
+            <p>서열과 subtype을 입력하면 여기에 예측 결과가 표시됩니다.</p>
+          </div>
+
+          <div class="result-content" id="result-content" hidden>
+            <p class="result-label">PREDICTED ADC SCORE</p>
+            <div class="score-row">
+              <strong id="score-value">0.000</strong>
+              <span>/ 10</span>
+            </div>
+            <div class="score-track">
+              <div class="score-fill" id="score-fill"></div>
+            </div>
+            <p class="score-caption" id="score-caption"></p>
+
+            <dl class="result-details">
+              <div>
+                <dt>Subtype</dt>
+                <dd id="result-subtype"></dd>
+              </div>
+              <div>
+                <dt>HCDR3</dt>
+                <dd id="result-hcdr3"></dd>
+              </div>
+              <div>
+                <dt>LCDR3</dt>
+                <dd id="result-lcdr3"></dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+      </section>
+
+      <footer>
+        연구용 예측 결과이며 임상적 판단을 대신하지 않습니다.
+      </footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

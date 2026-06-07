@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+adc_model.py
+app.py
+export_model.py
+model.ipynb
+model.ipynb:Zone.Identifier
+requirements-dev.txt
+simulation_adc_scores.csv
+static

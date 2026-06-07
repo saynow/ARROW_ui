@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "fluid": true,
+  "functions": {
+    "api/predict.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{model.ipynb,export_model.py,adc_model.py,app.py,requirements-dev.txt,simulation_adc_scores.csv,public/**,__pycache__/**}"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/api/metadata",
+      "destination": "/api/predict"
+    }
+  ]
+}

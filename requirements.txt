@@ -1,0 +1,3 @@
+ANARCI==2026.2.13.2
+biopython==1.87
+numpy==2.2.6
