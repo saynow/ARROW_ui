@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from http.server import BaseHTTPRequestHandler
 
 from lib.adc_runtime import (
@@ -46,6 +47,7 @@ class handler(BaseHTTPRequestHandler):
         except (ValueError, SequenceValidationError, json.JSONDecodeError) as error:
             self.send_json({"error": str(error)}, 400)
         except Exception:
+            logging.exception("ADC prediction failed")
             self.send_json(
                 {"error": "예측 중 서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."},
                 500,
