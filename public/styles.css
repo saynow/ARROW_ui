@@ -119,6 +119,7 @@ h1 {
 
 .result-card {
   display: flex;
+  flex-direction: column;
   min-height: 510px;
   padding: 32px;
   background:
@@ -277,6 +278,61 @@ button.loading .button-loader {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+.example-card {
+  padding: 16px;
+  border: 1px solid rgba(141, 240, 189, 0.18);
+  border-radius: 15px;
+  background: rgba(4, 13, 11, 0.34);
+}
+
+.example-card .example-label {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 0.67rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.example-card div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.example-card strong {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.example-card span,
+.example-card > p:not(.example-label) {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.example-card > p:not(.example-label) {
+  margin: 9px 0 13px;
+  line-height: 1.55;
+}
+
+.example-card button {
+  width: auto;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid rgba(141, 240, 189, 0.34);
+  color: var(--accent);
+  background: rgba(141, 240, 189, 0.08);
+  font-size: 0.76rem;
+}
+
+.example-card button:hover {
+  color: #042016;
+  background: var(--accent);
 }
 
 .empty-result,

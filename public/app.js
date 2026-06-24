@@ -10,6 +10,16 @@ const formError = document.querySelector("#form-error");
 const modelStatus = document.querySelector("#model-status");
 const emptyResult = document.querySelector("#empty-result");
 const resultContent = document.querySelector("#result-content");
+const loadExampleButton = document.querySelector("#load-example-button");
+
+const exampleInput = {
+  antibody_name: "Becotatugd",
+  subtype: "Humanized IgG1-kappa",
+  heavy_sequence:
+    "QVQLQESGPGLVKPSETLSLTCTVSGFSLSNYDVHWVRQAPGKGLEWLGVIWSGGNTDYNTPFTSRLTISVDTSKNQFSLKLSSVTAADTAVYYCARALDYYDYEFAYWGQGTLVTVSSASTKGPSVFPLAPSSKSTSGGTAALGCLVKDYFPEPVTVSWNSGALTSGVHTFPAVLQSSGLYSLSSVVTVPSSSLGTQTYICNVNHKPSNTKVDKRVEPKSCDKTHTCPPCPAPELLGGPSVFLFPPKPKDTLMISRTPEVTCVVVDVSHEDPEVKFNWYVDGVEVHNAKTKPREEQYNSTYRVVSVLTVLHQDWLNGKEYKCKVSNKALPAPIEKTISKAKGQPREPQVYTLPPSREEMTKNQVSLTCLVKGFYPSDIAVEWESNGQPENNYKTTPPVLDSDGSFFLYSKLTVDKSRWQQGNVFSCSVMHEALHNHYTQKSLSLSPG",
+  light_sequence:
+    "EIVLTQSPDFQSVTPKEKVTITCRASQSIGTNIHWYQQKPDQSPKLLIKYASESISGIPSRFSGSGSGTDFTLTINSLEAEDAATYYCQQNNEWPTSFGQGTKLEIKRTVAAPSVFIFPPSDEQLKSGTASVVCLLNNFYPREAKVQWKVDNALQSGNSQESVTEQDSKDSTYSLSSTLTLSKADYEKHKVYACEVTHQGLSSPVTKSFNRGEC",
+};
 
 function sequenceLength(value) {
   return value.replace(/\s/g, "").length;
@@ -21,6 +31,16 @@ function updateSequenceCount(input, output) {
 
 heavyInput.addEventListener("input", () => updateSequenceCount(heavyInput, heavyCount));
 lightInput.addEventListener("input", () => updateSequenceCount(lightInput, lightCount));
+
+loadExampleButton.addEventListener("click", () => {
+  subtypeInput.value = exampleInput.subtype;
+  heavyInput.value = exampleInput.heavy_sequence;
+  lightInput.value = exampleInput.light_sequence;
+  updateSequenceCount(heavyInput, heavyCount);
+  updateSequenceCount(lightInput, lightCount);
+  formError.textContent = "";
+  heavyInput.focus();
+});
 
 async function loadMetadata() {
   try {

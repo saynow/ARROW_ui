@@ -9,8 +9,8 @@
   <body>
     <main class="page-shell">
       <header class="hero">
-        <p class="eyebrow">ANTIBODY ANALYSIS</p>
-        <h1>ADC Score Predictor</h1>
+        <p class="eyebrow">SKKU YMAP</p>
+        <h1>ARROW for ADC</h1>
         <p class="intro">
           항체의 heavy chain, light chain 서열과 subtype을 입력하면<br>
           특성을 추출하여 ADC score를 예측합니다.
@@ -81,6 +81,16 @@
         </form>
 
         <aside class="result-card" id="result-card" aria-live="polite">
+          <div class="example-card">
+            <p class="example-label">Example input</p>
+            <div>
+              <strong>Becotatugd</strong>
+              <span>Humanized IgG1-kappa</span>
+            </div>
+            <p>예시 항체 서열을 입력창에 불러와 모델을 시연할 수 있습니다.</p>
+            <button type="button" id="load-example-button">예시 입력</button>
+          </div>
+
           <div class="empty-result" id="empty-result">
             <div class="molecule-mark">ADC</div>
             <h2>Prediction result</h2>
@@ -117,9 +127,6 @@
         </aside>
       </section>
 
-      <footer>
-        연구용 예측 결과이며 임상적 판단을 대신하지 않습니다.
-      </footer>
     </main>
     <script src="/app.js"></script>
   </body>
