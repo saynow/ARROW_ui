@@ -80,51 +80,52 @@
           </button>
         </form>
 
-        <aside class="result-card" id="result-card" aria-live="polite">
+        <div class="result-column">
           <div class="example-card">
             <p class="example-label">Example input</p>
             <div>
               <strong>Becotatugd</strong>
-              <span>Humanized IgG1-kappa</span>
             </div>
             <p>예시 항체 서열을 입력창에 불러와 모델을 시연할 수 있습니다.</p>
             <button type="button" id="load-example-button">예시 입력</button>
           </div>
 
-          <div class="empty-result" id="empty-result">
-            <div class="molecule-mark">ADC</div>
-            <h2>Prediction result</h2>
-            <p>서열과 subtype을 입력하면<br>
-               여기에 예측 결과가 표시됩니다.</p>
-          </div>
-
-          <div class="result-content" id="result-content" hidden>
-            <p class="result-label">PREDICTED ADC SCORE</p>
-            <div class="score-row">
-              <strong id="score-value">0.000</strong>
-              <span>/ 10</span>
+          <aside class="result-card" id="result-card" aria-live="polite">
+            <div class="empty-result" id="empty-result">
+              <div class="molecule-mark">ADC</div>
+              <h2>Prediction result</h2>
+              <p>서열과 subtype을 입력하면<br>
+                 여기에 예측 결과가 표시됩니다.</p>
             </div>
-            <div class="score-track">
-              <div class="score-fill" id="score-fill"></div>
-            </div>
-            <p class="score-caption" id="score-caption"></p>
 
-            <dl class="result-details">
-              <div>
-                <dt>Subtype</dt>
-                <dd id="result-subtype"></dd>
+            <div class="result-content" id="result-content" hidden>
+              <p class="result-label">PREDICTED ADC SCORE</p>
+              <div class="score-row">
+                <strong id="score-value">0.000</strong>
+                <span>/ 10</span>
               </div>
-              <div>
-                <dt>HCDR3</dt>
-                <dd id="result-hcdr3"></dd>
+              <div class="score-track">
+                <div class="score-fill" id="score-fill"></div>
               </div>
-              <div>
-                <dt>LCDR3</dt>
-                <dd id="result-lcdr3"></dd>
-              </div>
-            </dl>
-          </div>
-        </aside>
+              <p class="score-caption" id="score-caption"></p>
+
+              <dl class="result-details">
+                <div>
+                  <dt>Subtype</dt>
+                  <dd id="result-subtype"></dd>
+                </div>
+                <div>
+                  <dt>HCDR3</dt>
+                  <dd id="result-hcdr3"></dd>
+                </div>
+                <div>
+                  <dt>LCDR3</dt>
+                  <dd id="result-lcdr3"></dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
       </section>
 
     </main>

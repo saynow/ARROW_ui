@@ -117,6 +117,12 @@ h1 {
   padding: 30px;
 }
 
+.result-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .result-card {
   display: flex;
   flex-direction: column;
